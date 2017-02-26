@@ -1,20 +1,21 @@
-import java.util.UUID
+import DataStore._
 
 /**
   * Created by arpit on 21/2/17.
   */
 object Allocation {
+  val helper = new Helpers
 
   def main(args: Array[String]): Unit = {
-    println(DataStore.check(DataStore.user2UUID))
+    println(s"channel1UUID $channel1UUID")
+    println(s"channel2UUID $channel2UUID")
+    println(s"channel3UUID $channel3UUID")
+    println(s"channel4UUID $channel4UUID")
+    println(s"user1UUID $user1UUID")
+    println(s"user2UUID $user2UUID")
 
-    DataStore.addFollowings(Following(DataStore.channel2UUID, DataStore.user2UUID))
-    println(s"ANSSS >>>> ${DataStore.followings}")
+    println(s"Before adding collision >> $channels")
+    helper.addFollowings(Following(channel2UUID, user2UUID))
+    println(s"After adding collision >> $channels")
   }
 }
-
-
-case class Channel(id: UUID, name: String, phoneNumber: Option[String])
-case class User(id: UUID, name: String)
-case class Following(channelId: UUID, userId: UUID)
-case class PhoneNumber(number: String)
